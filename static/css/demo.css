@@ -1,0 +1,22 @@
+.container {
+	width: 960px;
+	margin: 0 auto;
+}
+
+.pt-section {
+	height: 800px;
+}
+
+#ptsection-one,
+#ptsection-three {
+	background-color: #5f6f81;
+}
+
+#ptsection-two,
+#ptsection-four {
+	background-color: #28292e;
+}
+
+#ptsection-four {
+	margin-bottom: 250px;
+}
