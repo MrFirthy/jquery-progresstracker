@@ -14,18 +14,20 @@
 	</div>
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script src="static/js/jquery.progresstracker.min.js"></script>
+<script src="static/js/jquery.progresstracker.js"></script>
 <script>
     (function() {
 		$('body').progressTracker({
             linking : true,
             tooltip : "constant",
-            negativeTolerance : 50,
+            negativeTolerance : 0,
             positiveTolerance : 0,
-            fadeIn : false,
+            displayWhenActive : true,
             disableBelow : 600
         });
     })();
 </script>
 </body>
 </html>
+
+

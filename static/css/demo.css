@@ -1,6 +1,6 @@
 .container {
 	width: 960px;
-	margin: 0 auto;
+	margin: 500px auto;
 }
 
 .pt-section {
@@ -15,8 +15,4 @@
 #ptsection-two,
 #ptsection-four {
 	background-color: #28292e;
-}
-
-#ptsection-four {
-	margin-bottom: 250px;
 }

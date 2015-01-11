@@ -8,8 +8,9 @@
 			tooltip: "constant",
 			positiveTolerance: 0,
 			negativeTolerance: 0,
-			fadeIn: true,
-			disableBelow: 0
+			displayWhenActive: true,
+			disableBelow: 0,
+			tracking: "tracker"
 		}, options);
 
 		//Create progress tracker element and list
@@ -54,22 +55,27 @@
 		//Set up hover visibility if tooltips are enabled
 		if(settings.tooltip == "hover") {
 			$('.progress-tracker ul li').hover(function() {
-				$(this).find('.pt-description').fadeIn();
+				$(this).find('.pt-description').show();
 			}, function() {
-				$(this).find('.pt-description').fadeOut();
+				$(this).find('.pt-description').hide();
 			});
 		} else if(settings.tooltip == "constant") {
 			$('.progress-tracker').addClass('constant');
 		}
 
 		function activeSectionCheck () {
-			var scroll = $(window).scrollTop();
+
+			if(settings.tracking == "viewport") {
+				var scroll = $(window).scrollTop();
+			} else {
+				var scroll = $('.progress-tracker').offset().top;
+			}
 
 			$('.pt-section').each(function(index) {
 
 				var $this = $(this),
 					sectionTop = $this.offset().top,
-					sectionBottom = sectionTop + $this.height(),
+					sectionBottom = sectionTop + $this.outerHeight(),
 					sectionTitle = $this.attr('id');
 
 				//Check if positiveTolerance is an integer and, if so, add to section Top & Bottom
@@ -92,47 +98,41 @@
 			});
 		}
 
-		function handleFadeIn () {
-			var fadeScroll = $(window).scrollTop(),
-				progressTracker = $('.progress-tracker'),
-				firstTop,
-				lastBottom;
-
-			if(settings.fadeIn) {
-				firstTop = $('.pt-section:first').offset().top;
-				lastBottom = $('.pt-section:last').offset().top + ($('.pt-section:last').height()/2);
+		function activeTrackerCheck () {
+			if(!settings.displayWhenActive) {
+				return false;
 			}
 
-			if(fadeScroll >= firstTop - 300 && fadeScroll < lastBottom) {
-				if(!progressTracker.is(':visible')) {
-					progressTracker.fadeIn();
-				}
-			} else if(fadeScroll >= lastBottom) {
-				if(progressTracker.is(':visible')) {
-					progressTracker.fadeOut();	
-				}
-			}
-
-			if(fadeScroll < firstTop - 300 && progressTracker.is(':visible')) {
-				progressTracker.fadeOut();
+			var	progressTracker = $('.progress-tracker'),
+				firstTop = $('.pt-section:first').offset().top,
+				lastBottom = $('.pt-section:last').offset().top + ($('.pt-section:last').outerHeight());
+			if(progressTracker.offset().top >= firstTop && progressTracker.offset().top <= lastBottom) {
+				progressTracker.removeClass('hide');
+			} else {
+				progressTracker.addClass('hide');
 			}
 		}
 
 		$( window ).scroll(function() {
 			activeSectionCheck();
-			handleFadeIn();
+			activeTrackerCheck();
 		});
 
+		$(document).ready(function() {
+			activeSectionCheck();
+			activeTrackerCheck();
+		});
+		
 		//Hide below a certain width if specified
 		if(settings.disableBelow > 0 && $.isNumeric(settings.disableBelow)) {
 			var resizeTimer;
     		function resizeFunction() {
-    			if($(window).width() <= settings.disableBelow) {
-    				$('.progress-tracker').hide();
-    			} else {
-    				$('.progress-tracker').show();
-    			}
-    		}
+	   			if($(window).width() <= settings.disableBelow) {
+	   				$('.progress-tracker').hide();
+	   			} else {
+	   				$('.progress-tracker').show();
+	   			}
+	   		}
 
 			$(window).resize(function() {
 		        clearTimeout(resizeTimer);

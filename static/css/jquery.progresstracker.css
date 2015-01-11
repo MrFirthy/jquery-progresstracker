@@ -4,6 +4,14 @@
   top: 50%;
   right: 10px;
 }
+.progress-tracker.hide {
+  width: 0px;
+}
+.progress-tracker.hide ul li .pt-description,
+.progress-tracker.hide.active ul li .pt-description,
+.progress-tracker.hide.constant ul li.active .pt-description {
+  display: none;
+}
 .progress-tracker ul li {
   width: 20px;
   height: 20px;
