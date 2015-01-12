@@ -35,3 +35,47 @@ Specifies what the plugin takes into account when deciding when to switch to the
 ---
 
 ## Setup
+
+1. Include jQuery followed by progressTracker.js just before the end of the body tag  
+```html
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="jquery.progresstracker.min.js"></script>
+```  
+2. Include the Progress Tracker CSS in the head  
+```html
+<link rel="stylesheet" type="text/css" href="static/css/jquery.progresstracker.css">
+```  
+3. Initialise the plugin below the included scripts  
+```javascript
+<script>
+	(function() {
+		//Standard initialisation
+		$('body').progressTracker();
+	})();
+</script>
+```  
+Or with custom options:  
+```javascript
+<script>
+	(function() {
+		$('body').progressTracker({
+	        linking : true,
+	        tooltip : "constant",
+	        negativeTolerance : 0,
+	        positiveTolerance : 0,
+	        displayWhenActive : true,
+	        disableBelow : 600
+	    });
+	})();
+</script>
+```  
+4. In order for the plugin to pick up all the relevant sections, you must add the class of `pt-section` to it. You must also specify a `data-name` to be the content of the tooltip, and an `id` if you intend to use deeplinking when you click on a bullet.  
+```html
+<div class="pt-section" data-name="Sec One" id="ptsection-one"></div>
+```  
+
+---
+
+## Questions  
+
+If you find anything wrong with the plugin, have issues getting it working, or think of something cool it could do, feel free to submit an issue.
