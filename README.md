@@ -76,6 +76,12 @@ Or with custom options:
 
 ---
 
+## Demo  
+
+[Live demo can be found here](http://mrfirthy.me/experiments/example/jquery-progress-tracker/) using the same code as the repository
+
+---
+
 ## Questions  
 
 If you find anything wrong with the plugin, have issues getting it working, or think of something cool it could do, feel free to submit an issue.

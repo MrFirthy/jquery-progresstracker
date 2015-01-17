@@ -1,6 +1,10 @@
+body {
+	font-family: Helvetica, Arial, sans-serif;
+}
+
 .container {
 	width: 960px;
-	margin: 500px auto;
+	margin: 500px auto 700px;
 }
 
 .pt-section {
