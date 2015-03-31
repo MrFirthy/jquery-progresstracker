@@ -29,7 +29,8 @@
 			}
 
 			if(settings.tooltip) {
-				itemDescription = "<span class='pt-description'><span>" + sectionName + "</span></span>";
+                if(sectionName.length)
+    				itemDescription = "<span class='pt-description'><span>" + sectionName + "</span></span>";
 			}
 
 			$('.progress-tracker ul').append(
