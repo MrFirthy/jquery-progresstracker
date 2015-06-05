@@ -31,19 +31,15 @@
 }
 .progress-tracker ul li .pt-description {
   display: none;
-  width: 100px;
   position: absolute;
   top: -2px;
   right: 25px;
-}
-.progress-tracker ul li .pt-description span {
-  float: right;
-  text-align: right;
-  background-color: #e9ebea;
   padding: 3px 8px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
+  background-color: #e9ebea;
+  white-space:nowrap;
 }
 .progress-tracker ul li.active {
   background-color: #0070a4;
