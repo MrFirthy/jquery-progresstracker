@@ -20,7 +20,7 @@
 		$('.pt-section').each(function(index) {
 			var $this = $(this),
 				sectionId = $this.attr('id'),
-				sectionName = $this.data('name'),
+				sectionName = $this.data('name') || "",
 				itemLink = "",
 				itemDescription = "";
 
